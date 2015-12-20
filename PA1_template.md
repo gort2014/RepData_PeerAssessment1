@@ -108,18 +108,6 @@ To do this without a package in base R, we can create a column of mean by interv
 
 ```r
 columnMeanByInterval <- rep(meanByInterval, 61)
-length(columnMeanByInterval); dim(myData)
-```
-
-```
-## [1] 17568
-```
-
-```
-## [1] 17568     3
-```
-
-```r
 myData2 <- myData
 myData2$steps <- ifelse(is.na(myData2$steps),columnMeanByInterval,myData2$steps)
 ```
@@ -134,6 +122,22 @@ hist(totalStepsByDay2, main = "Figure 3: Total Steps by Day -- Modified",
      xlab = "Number of Steps", ylab = "Days")
 meanByDay2 <- round(mean(totalStepsByDay2, na.rm = T),0)
 medianByDay2 <- round(median(totalStepsByDay2, na.rm = T),0)
+paste("The new mean is ", round(meanByDay2,0), sep ="")
+```
+
+```
+## [1] "The new mean is 10766"
+```
+
+```r
+paste("The new median is ", round(medianByDay2,0), sep ="")
+```
+
+```
+## [1] "The new median is 10766"
+```
+
+```r
 title(sub = paste("New mean is ", meanByDay2 , " and new median is ", medianByDay2, sep = ""))
 ```
 
